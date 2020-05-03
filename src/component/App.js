@@ -13,28 +13,32 @@ class App extends Component {
       //(1)よりtisuの値がpropsにはいる
       const props = this.props
       console.log({props})
-      
+
       //全体をルーティングで切り替えるために<BrouserRouter>で囲う
       //ルーティングへのリンクは<Link to>
       //各ルーティングとコンポーネントを対応させているのが<Switch>の中の<Route />
       return (
           <React.Fragment>
-          <BrowserRouter>
-            <div>{props.value}</div>
-            <div>コンポーネントちーす</div>
-            <button onClick={props.tisu}>くりっくで「。」つける</button>
-            <div>
-              <Link to='/admin'>adminのトップページコンポーネントへスイッチ</Link>
-            </div>
-            <div>
-              <Link to='/admin/sample'>adminのサンプルぺコンポーネントへスイッチ</Link>
-            </div>
-            
-                <Switch>
-                    <Route exact path='/admin' component={AdminTop}/>
-                    <Route path='/admin/sample' component={AdminSample} />
-                </Switch>
-          </BrowserRouter>
+            <BrowserRouter>
+              <div>{props.value}</div>
+              <div>コンポーネントちーす</div>
+              <button onClick={props.tisu}>くりっくで「。」つける</button>
+              <div>
+                <Link to='/'>ちーすだけに戻る</Link>
+              </div>
+              <div>
+                <Link to='/admin'>adminのトップページコンポーネントへスイッチ</Link>
+              </div>
+              <div>
+                <Link to='/admin/sample'>adminのサンプルぺコンポーネントへスイッチ</Link>
+              </div>
+
+              <Switch>
+                <Route exact path="/" />
+                <Route exact path='/admin' component={AdminTop}/>
+                <Route path='/admin/sample' component={AdminSample} />
+              </Switch>
+            </BrowserRouter>
           </React.Fragment>
       )
     }
