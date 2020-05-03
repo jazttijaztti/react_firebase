@@ -3,8 +3,8 @@ import {connect} from 'react-redux'
 import '../css/index.css';
 import '../css/reset.css';
 import {tisu} from '../actions'
-import AdminTop from './AdminTop.js'
-import AdminSample from './AdminSample.js'
+import AdminTop from './Admin/AdminTop.js'
+import Top from './User/Top.js'
 import { BrowserRouter, Switch, Route, Link } from 'react-router-dom' //4つのAPI(タグが使える)をreact-router-domから読み込む
 
 
@@ -29,23 +29,9 @@ class App extends Component {
       return (
           <React.Fragment>
             <BrowserRouter>
-              <div>{props.value}</div>
-              <div>コンポーネントちーす</div>
-              <button onClick={props.tisu}>くりっくで「。」つける</button>
-              <div>
-                <Link to='/'>ちーすだけに戻る</Link>
-              </div>
-              <div>
-                <Link to='/admin'>adminのトップページコンポーネントへスイッチ</Link>
-              </div>
-              <div>
-                <Link to='/admin/sample'>adminのサンプルぺコンポーネントへスイッチ</Link>
-              </div>
-
               <Switch>
-                <Route exact path="/" />
+                <Route exact path="/" component={Top}/>
                 <Route exact path='/admin' component={AdminTop}/>
-                <Route path='/admin/sample' component={AdminSample} />
               </Switch>
             </BrowserRouter>
           </React.Fragment>
