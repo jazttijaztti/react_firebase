@@ -15,6 +15,7 @@ const AdminLogin = () => {
                     ログイン
                 </button>
             </form>
+            <Link to='/admin/user'>仮のadminページへのリンク</Link>
         </div>
     )
 }

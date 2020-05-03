@@ -3,9 +3,15 @@ import {connect} from 'react-redux'
 import '../css/index.css';
 import '../css/reset.css';
 import {tisu} from '../actions'
+import {users} from '../actions/users'
 import AdminLogin from './Admin/AdminLogin.js'
+import UserIndex from './Admin/UserIndex.js'
 import Top from './User/Top.js'
 import { BrowserRouter, Switch, Route, Link } from 'react-router-dom' //4つのAPI(タグが使える)をreact-router-domから読み込む
+import thunk from 'redux-thunk'
+import { reduxFirestore, getFirestore } from 'redux-firestore'
+import { reactReduxFirebase, getFirebase } from 'react-redux-firebase'
+import fbConfig from '../config/firebase'
 
 
 
@@ -13,7 +19,7 @@ class App extends Component {
 
     componentDidMount(){
        console.log("ういーす")
-       this.props.tisu()
+      //  this.props.users()
     }
  
 
@@ -21,7 +27,6 @@ class App extends Component {
     render(){
       //(1)よりtisuの値がpropsにはいる
       const props = this.props
-      console.log({props})
 
       //全体をルーティングで切り替えるために<BrouserRouter>で囲う
       //ルーティングへのリンクは<Link to>
@@ -32,6 +37,7 @@ class App extends Component {
               <Switch>
                 <Route exact path="/" component={Top}/>
                 <Route exact path='/admin' component={AdminLogin}/>
+                <Route path='/admin/user/' component={UserIndex}/>
               </Switch>
             </BrowserRouter>
           </React.Fragment>
@@ -40,10 +46,10 @@ class App extends Component {
 }
 
 //(1)全てのstateから限定してtisuだけPropsにマッピング
-const mapStateToProps = state => ({value: state.tisu.value})
+const mapStateToProps = state => ({value: state.users})
 
 //コンポーネント側でtisu()を実行したらreducerのtypeでマッピングした関数が実行される
-const  mapDispatchToProps = ({tisu})
+const  mapDispatchToProps = ({users})
 
 
 export default connect(mapStateToProps , mapDispatchToProps)(App)
@@ -51,7 +57,7 @@ export default connect(mapStateToProps , mapDispatchToProps)(App)
 
 //サンプル
 const Admin = (props) => {
-  return <div>{props.tisu}</div>
+  return <div>{props.users}</div>
 
 }
 
