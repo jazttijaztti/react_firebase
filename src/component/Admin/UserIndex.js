@@ -24,9 +24,10 @@ class UserIndex extends Component {
 
     getFireData() {
         let db = firebase.database();
-        let ref = db.ref("/users/");
+        let ref = db.ref("/users");
         let self = this;
-        ref.on("value", snapshot => {
+        ref.once('value')
+        .then(snapshot => {
             self.setState({
               data: snapshot.val()
             });
