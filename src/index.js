@@ -6,12 +6,14 @@ import { createStore , applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
 import reducer from './reducers'
 import thunk from 'redux-thunk'
+import { getFirestore } from 'redux-firestore'
+import { getFirebase } from 'react-redux-firebase'
 
 import App from './component/App';
 import * as serviceWorker from './serviceWorker';
 
 //reducerの機構をProviderでstoreの中にいれて全コンポーネントで使えるようにする
-const store = createStore(reducer , applyMiddleware(thunk))
+const store = createStore(reducer , applyMiddleware(thunk.withExtraArgument({ getFirebase, getFirestore })))
 ReactDOM.render(
     <Provider store={store}>
       <App />
