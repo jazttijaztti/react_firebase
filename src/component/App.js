@@ -18,15 +18,11 @@ import fbConfig from '../config/firebase'
 class App extends Component {
 
     componentDidMount(){
-       console.log("ういーす")
-      //  this.props.users()
     }
- 
-
 
     render(){
       //(1)よりtisuの値がpropsにはいる
-      const props = this.props
+      //const props = this.props
 
       //全体をルーティングで切り替えるために<BrouserRouter>で囲う
       //ルーティングへのリンクは<Link to>
@@ -51,13 +47,5 @@ const mapStateToProps = state => ({value: state.users})
 //コンポーネント側でtisu()を実行したらreducerのtypeでマッピングした関数が実行される
 const  mapDispatchToProps = ({users})
 
-
 export default connect(mapStateToProps , mapDispatchToProps)(App)
-
-
-//サンプル
-const Admin = (props) => {
-  return <div>{props.users}</div>
-
-}
 

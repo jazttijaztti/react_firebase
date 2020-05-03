@@ -7,10 +7,6 @@ import { compose } from 'redux'
 import { render } from 'react-dom'
 import firebase from "firebase";
 import "firebase/storage";
-import thunk from 'redux-thunk'
-import { reduxFirestore, getFirestore } from 'redux-firestore'
-import { reactReduxFirebase, getFirebase } from 'react-redux-firebase'
-import fbConfig from '../../config/firebase'
 
 class UserIndex extends Component {
     constructor(props) {

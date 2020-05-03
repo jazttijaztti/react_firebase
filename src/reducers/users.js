@@ -8,7 +8,7 @@ export default (state = initialState, action) => {
     switch(action.type) {
         case USERS:
             return state
-        
+
         default:
           return state
     }
