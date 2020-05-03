@@ -2,14 +2,16 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './css/index.css';
 import './css/reset.css';
-import { createStore } from 'redux'
+import { createStore , applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
 import reducer from './reducers'
+import thunk from 'redux-thunk'
+
 import App from './component/App';
 import * as serviceWorker from './serviceWorker';
 
 //reducerの機構をProviderでstoreの中にいれて全コンポーネントで使えるようにする
-const store = createStore(reducer)
+const store = createStore(reducer , applyMiddleware(thunk))
 ReactDOM.render(
     <Provider store={store}>
       <App />

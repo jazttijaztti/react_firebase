@@ -9,6 +9,9 @@ export default (state = initialState, action) => {
    switch(action.type) {
 
      case TISU:
+
+           //値の形式がわからんのでここまでにするがfirebaseからの値はreturnに渡せばうけ渡せる。
+           console.log(action.response)
            return {value:state.value + "。"}
 
 

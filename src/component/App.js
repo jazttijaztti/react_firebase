@@ -4,8 +4,18 @@ import '../css/index.css';
 import '../css/reset.css';
 import {tisu} from '../actions'
 
+
+
 class App extends Component {
-    
+
+    componentDidMount(){
+       console.log("ういーす")
+       this.props.tisu()
+    }
+ 
+
+
+
     render(){
       //(1)よりtisuの値がpropsにはいる
       const props = this.props
@@ -25,9 +35,7 @@ class App extends Component {
 const mapStateToProps = state => ({value: state.tisu.value})
 
 //コンポーネント側でtisu()を実行したらreducerのtypeでマッピングした関数が実行される
-const  mapDispatchToProps = dispatch =>({
-    tisu: ()=> dispatch(tisu()),
-})
+const  mapDispatchToProps = ({tisu})
 
 
 export default connect(mapStateToProps , mapDispatchToProps)(App)
