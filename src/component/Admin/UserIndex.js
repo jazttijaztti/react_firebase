@@ -47,6 +47,7 @@ class UserIndex extends Component {
           result.push(
             <tr key={i}>
               <td>{this.state.data[i].name}</td>
+              <td>{this.state.data[i].gender}</td>
             </tr>
           );
         }
