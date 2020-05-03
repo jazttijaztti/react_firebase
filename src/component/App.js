@@ -3,19 +3,38 @@ import {connect} from 'react-redux'
 import '../css/index.css';
 import '../css/reset.css';
 import {tisu} from '../actions'
+import AdminTop from './AdminTop.js'
+import AdminSample from './AdminSample.js'
+import { BrowserRouter, Switch, Route, Link } from 'react-router-dom' //4つのAPI(タグが使える)をreact-router-domから読み込む
 
 class App extends Component {
-    
+
     render(){
       //(1)よりtisuの値がpropsにはいる
       const props = this.props
       console.log({props})
-    
+      
+      //全体をルーティングで切り替えるために<BrouserRouter>で囲う
+      //ルーティングへのリンクは<Link to>
+      //各ルーティングとコンポーネントを対応させているのが<Switch>の中の<Route />
       return (
           <React.Fragment>
-          <div>{props.value}</div>
-          <div>コンポーネントちーす</div>
-          <button onClick={props.tisu}>くりっくで「。」つける</button>
+          <BrowserRouter>
+            <div>{props.value}</div>
+            <div>コンポーネントちーす</div>
+            <button onClick={props.tisu}>くりっくで「。」つける</button>
+            <div>
+              <Link to='/admin'>adminのトップページコンポーネントへスイッチ</Link>
+            </div>
+            <div>
+              <Link to='/admin/sample'>adminのサンプルぺコンポーネントへスイッチ</Link>
+            </div>
+            
+                <Switch>
+                    <Route exact path='/admin' component={AdminTop}/>
+                    <Route path='/admin/sample' component={AdminSample} />
+                </Switch>
+          </BrowserRouter>
           </React.Fragment>
       )
     }
