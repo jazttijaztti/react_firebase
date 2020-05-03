@@ -2,19 +2,12 @@ import React ,{ Component } from 'react';
 import {connect} from 'react-redux'
 import '../css/index.css';
 import '../css/reset.css';
-import {tisu} from '../actions'
-import {users} from '../actions/users'
+import {users} from '../actions'
 import AdminLogin from './Admin/AdminLogin.js'
 import UserIndex from './Admin/UserIndex.js'
 import Top from './User/Top.js'
 import { BrowserRouter, Switch, Route, Link } from 'react-router-dom' //4つのAPI(タグが使える)をreact-router-domから読み込む
-import thunk from 'redux-thunk'
-import { reduxFirestore, getFirestore } from 'redux-firestore'
-import { reactReduxFirebase, getFirebase } from 'react-redux-firebase'
 import fbConfig from '../config/firebase'
-
-
-
 class App extends Component {
 
     componentDidMount(){

@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 //reducerとリンクする設定
-export const USERS = 'USERS' 
+export const USERS = 'USERS'
 //const firebase_URL = 'https://ファイヤーベースのURL.com/api/v1とか'
 const QUERY = '?token=daikikyoumogenkidesu123da'
 

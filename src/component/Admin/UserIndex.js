@@ -1,12 +1,11 @@
 import React, { Component } from 'react'
 import Navigation from './Navigation.js'
-import UserList from './UserList.js'
-import { connect } from 'react-redux'
-import { firestoreConnect } from 'react-redux-firebase'
-import { compose } from 'redux'
 import { render } from 'react-dom'
 import firebase from "firebase";
 import "firebase/storage";
+//import { connect } from 'react-redux'
+//import { firestoreConnect } from 'react-redux-firebase'
+//import { compose } from 'redux'
 
 class UserIndex extends Component {
     constructor(props) {
@@ -16,7 +15,6 @@ class UserIndex extends Component {
         };
         this.getFireData();
     }
-    
 
     getFireData() {
         let db = firebase.database();
@@ -32,13 +30,6 @@ class UserIndex extends Component {
 
     getTableData() {
         let result = [];
-        if (this.state.data == null || this.state.data.length == 0) {
-          return [
-            <tr key="0">
-              <th>NO DATA</th>
-            </tr>
-          ];
-        }
         for (let i in this.state.data) {
           result.push(
             <tr key={i}>
