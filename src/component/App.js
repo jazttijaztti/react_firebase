@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 import '../css/index.css';
 import '../css/reset.css';
 import {tisu} from '../actions'
-import AdminTop from './Admin/AdminLogin.js'
+import AdminLogin from './Admin/AdminLogin.js'
 import Top from './User/Top.js'
 import { BrowserRouter, Switch, Route, Link } from 'react-router-dom' //4つのAPI(タグが使える)をreact-router-domから読み込む
 
@@ -31,7 +31,7 @@ class App extends Component {
             <BrowserRouter>
               <Switch>
                 <Route exact path="/" component={Top}/>
-                <Route exact path='/admin' component={AdminTop}/>
+                <Route exact path='/admin' component={AdminLogin}/>
               </Switch>
             </BrowserRouter>
           </React.Fragment>
