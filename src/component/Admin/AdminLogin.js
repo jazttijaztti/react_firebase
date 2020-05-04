@@ -3,7 +3,6 @@ import {connect} from 'react-redux'
 import ReactDOM from 'react-dom';
 import '../../css/admin/admin_style.css';
 import '../../css/admin/reset.css';
-import AdminDashbord from './AdminDashbord.js'
 //import AdminHeader from './common/Header.js'
 //import AdminFooter from './common/Footer.js'
 import { BrowserRouter, Switch, Route, Link } from 'react-router-dom'
@@ -37,12 +36,6 @@ const AdminLogin = () => {
             </div>
           </div>
         </main>
-        
-        <BrowserRouter>
-              <Switch>
-                <Route exact path='/admin_dashbord' component={AdminDashbord}/>
-              </Switch>
-        </BrowserRouter>
         </React.Fragment>
     )
 }
