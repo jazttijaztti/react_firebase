@@ -2,16 +2,26 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './css/index.css';
 import './css/reset.css';
-import { createStore , applyMiddleware } from 'redux'
+import { createStore , applyMiddleware, compose } from 'redux'
 import { Provider } from 'react-redux'
 import reducer from './reducers'
-import thunk from 'redux-thunk'
+import fbConfig from './config/firebase'
+//import thunk from 'redux-thunk'
+//import { reduxFirestore, getFirestore } from 'redux-firestore'
+//import { reactReduxFirebase, getFirebase } from 'react-redux-firebase'
 
 import App from './component/App';
 import * as serviceWorker from './serviceWorker';
 
-//reducerの機構をProviderでstoreの中にいれて全コンポーネントで使えるようにする
-const store = createStore(reducer , applyMiddleware(thunk))
+//reducerの機能をProviderでstoreの中にいれて全コンポーネントで使えるようにする
+//thunkを使ってfirebasestoreをstoreに入れなくても今の所動く
+const store = createStore(reducer ,
+  /*compose(
+    applyMiddleware(thunk.withExtraArgument({ getFirebase, getFirestore })),
+    reduxFirestore(fbConfig),
+    reactReduxFirebase(fbConfig)
+  )*/
+);
 ReactDOM.render(
     <Provider store={store}>
       <App />
