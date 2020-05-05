@@ -9,14 +9,14 @@ import UserIndex from './Admin/UserIndex.js'
 import AdminDashbord from './Admin/AdminDashbord'
 import Top from './User/Top.js'
 import { BrowserRouter, Switch, Route, Link } from 'react-router-dom' //4つのAPI(タグが使える)をreact-router-domから読み込む
-import fbConfig from '../config/firebase'
 import AdminLayout from './Admin/AdminLayout';
+
 class App extends Component {
 
     componentDidMount(){
     }
 
-    render(){
+    render() {
       //(1)よりtisuの値がpropsにはいる
       //const props = this.props
 
