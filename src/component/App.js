@@ -4,6 +4,8 @@ import '../css/index.css';
 import '../css/reset.css';
 import {users} from '../actions'
 import AdminLogin from './Admin/AdminLogin.js'
+import AdminDashbord from './Admin/AdminDashbord.js'
+
 import UserIndex from './Admin/UserIndex.js'
 import Top from './User/Top.js'
 import { BrowserRouter, Switch, Route, Link } from 'react-router-dom' //4つのAPI(タグが使える)をreact-router-domから読み込む
@@ -29,6 +31,7 @@ class App extends Component {
                 <Route path='/admin/login' component={AdminLogin}/>
                 <Route path='/admin' component={AdminLayout}/>
                 <Route path='/admin/user/' component={UserIndex}/>
+
               </Switch>
             </BrowserRouter>
           </React.Fragment>

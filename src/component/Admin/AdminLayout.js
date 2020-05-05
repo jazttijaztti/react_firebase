@@ -9,8 +9,6 @@ import AdminFooter from './common/AdminFooter.js'
 import '../../css/admin/reset.css';
 import '../../css/admin/admin_style.css';
 
-const AdminLogin = React.lazy(() => import('./AdminLogin'));
-
 const AdminLayout = () => {
   return (
     <>
