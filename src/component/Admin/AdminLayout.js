@@ -13,6 +13,9 @@ import PrivateRoute from './../../auth/PrivateRoute';
 import '../../css/admin/reset.css';
 import '../../css/admin/admin_style.css';
 
+import firebase from "firebase";
+import "firebase/storage";
+
 const AdminLayout = () => {
   return (
     <>
