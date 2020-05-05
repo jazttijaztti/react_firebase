@@ -30,14 +30,14 @@ const AdminLogin = () => {
                   <input type="password" name="password" className="login_form_input" />
                   <p className="login_error_text" style={{display: 'none'}}>*入力してください</p>
                 </div>
-                <Link to='/admin_dashbord'>
+                <Link to='/admin/dashboard'>
                 <button type="button" className="common_btn01 w300 center">ログイン</button>
                 </Link>
               </form>
             </div>
           </div>
         </main>
-        
+
         <BrowserRouter>
               <Switch>
                 <Route exact path='/admin_dashbord' component={AdminDashbord}/>

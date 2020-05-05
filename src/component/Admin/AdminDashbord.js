@@ -14,10 +14,6 @@ const AdminDashbord = () => {
 
     return (
         <React.Fragment>
-            <AdminHeader />
-            <main>
-                <div className="common_layout">
-                    <AdminMenu />
                     <div className="common_main">
                         <h1 className="common_title">USER<span>ユーザー一覧</span></h1>
                         <div className="user_search_block">
@@ -150,7 +146,7 @@ const AdminDashbord = () => {
 
                             </ul>
                         </div>
-                        <div className="common_pager">	
+                        <div className="common_pager">
                             <a href="" className="common_pager_prev"></a>
                             <ul className="common_pager_list">
                                 <li className="common_pager_item">
@@ -172,13 +168,9 @@ const AdminDashbord = () => {
                             <a href="" className="common_pager_next active"></a>
                         </div>
                     </div>
-                </div>
-            </main>
-              
-            <AdminFooter /> 
-        
-        
-        
+
+
+
         <BrowserRouter>
               <Switch>
                 /*<Route exact path='/admin_dashbord' component={AdminDashbord}/> */
