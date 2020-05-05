@@ -31,7 +31,6 @@ class App extends Component {
                 <Route path='/admin/login' component={AdminLogin}/>
                 <Route path='/admin' component={AdminLayout}/>
                 <Route path='/admin/user/' component={UserIndex}/>
-                <Route path='/admin_dashbord' component={AdminDashbord}/>
               </Switch>
             </BrowserRouter>
           </React.Fragment>
