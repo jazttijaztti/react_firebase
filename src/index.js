@@ -12,6 +12,7 @@ import fbConfig from './config/firebase'
 
 import App from './component/App';
 import * as serviceWorker from './serviceWorker';
+import HtmlWebpackPlugin from 'html-webpack-plugin'
 
 //reducerの機能をProviderでstoreの中にいれて全コンポーネントで使えるようにする
 //thunkを使ってfirebasestoreをstoreに入れなくても今の所動く

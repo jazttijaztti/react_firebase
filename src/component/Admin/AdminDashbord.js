@@ -176,14 +176,6 @@ const AdminDashbord = () => {
             </main>
               
             <AdminFooter /> 
-        
-        
-        
-        <BrowserRouter>
-              <Switch>
-                /*<Route exact path='/admin_dashbord' component={AdminDashbord}/> */
-              </Switch>
-        </BrowserRouter>
         </React.Fragment>
     )
 }

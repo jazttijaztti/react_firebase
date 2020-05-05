@@ -31,18 +31,12 @@ const AdminLogin = () => {
                   <p className="login_error_text" style={{display: 'none'}}>*入力してください</p>
                 </div>
                 <Link to='/admin_dashbord'>
-                <button type="button" className="common_btn01 w300 center">ログイン</button>
+                    <button type="button" className="common_btn01 w300 center">ログイン</button>
                 </Link>
               </form>
             </div>
           </div>
         </main>
-        
-        <BrowserRouter>
-              <Switch>
-                <Route exact path='/admin_dashbord' component={AdminDashbord}/>
-              </Switch>
-        </BrowserRouter>
         </React.Fragment>
     )
 }

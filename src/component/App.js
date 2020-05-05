@@ -5,6 +5,7 @@ import '../css/reset.css';
 import {users} from '../actions'
 import AdminLogin from './Admin/AdminLogin.js'
 import UserIndex from './Admin/UserIndex.js'
+import AdminDashbord from './Admin/AdminDashbord'
 import Top from './User/Top.js'
 import { BrowserRouter, Switch, Route, Link } from 'react-router-dom' //4つのAPI(タグが使える)をreact-router-domから読み込む
 import fbConfig from '../config/firebase'
@@ -27,6 +28,7 @@ class App extends Component {
                 <Route exact path="/" component={Top}/>
                 <Route exact path='/admin' component={AdminLogin}/>
                 <Route path='/admin/user/' component={UserIndex}/>
+                <Route path='/admin_dashbord' component={AdminDashbord}/>
               </Switch>
             </BrowserRouter>
           </React.Fragment>
