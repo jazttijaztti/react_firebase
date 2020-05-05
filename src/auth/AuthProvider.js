@@ -6,15 +6,16 @@ export const AuthContext = React.createContext();
 
 export const AuthProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
+  console.log(currentUser);
 
   const login = async (email, password, history) => {
     try {
       await firebase.auth().signInWithEmailAndPassword(email, password);
-      history.push('admin/dashboard');
+      history.push('/admin/dashboard');
     } catch (error) {
       alert(error);
     }
-  }
+  };
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged(setCurrentUser);
@@ -23,7 +24,8 @@ export const AuthProvider = ({ children }) => {
   return (
     <AuthContext.Provider
       value={{
-        login: login
+        login: login,
+        currentUser
        }}
     >
       { children }

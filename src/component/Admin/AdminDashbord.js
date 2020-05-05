@@ -1,13 +1,7 @@
 import React ,{ Component } from 'react';
-import {connect} from 'react-redux'
-import ReactDOM from 'react-dom';
 import '../../css/admin/admin_style.css';
 import '../../css/admin/reset.css';
-import AdminMenu   from './common/AdminMenu.js'
-import AdminHeader from './common/AdminHeader.js'
-import AdminFooter from './common/AdminFooter.js'
-import { BrowserRouter, Switch, Route, Link } from 'react-router-dom'
-
+import { BrowserRouter, Switch, Route, withRouter } from 'react-router-dom'
 const AdminDashbord = () => {
 
     return (
@@ -128,4 +122,4 @@ const AdminDashbord = () => {
     )
 }
 
-export default AdminDashbord;
+export default withRouter(AdminDashbord);
