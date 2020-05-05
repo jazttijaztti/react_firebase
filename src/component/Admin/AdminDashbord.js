@@ -8,16 +8,10 @@ import AdminHeader from './common/AdminHeader.js'
 import AdminFooter from './common/AdminFooter.js'
 import { BrowserRouter, Switch, Route, Link } from 'react-router-dom'
 
-
-
 const AdminDashbord = () => {
 
     return (
         <React.Fragment>
-            <AdminHeader />
-            <main>
-                <div className="common_layout">
-                    <AdminMenu />
                     <div className="common_main">
                         <h1 className="common_title">USER<span>ユーザー一覧</span></h1>
                         <div className="user_search_block">
@@ -81,76 +75,26 @@ const AdminDashbord = () => {
                                 <li className="common_user_item">
                                     <div className="common_user_name_block">
                                         <p className="common_user_name"><span>山田太郎</span>さん</p>
-                                        <a href="A-3-2.html" className="common_user_edit_btn">編集</a>
+                                        <a href="A-3-2.html" className="common_user_edit_btn">詳細^^b</a>
                                     </div>
                                     <ul className="common_user_info_list">
                                         <li className="common_user_info">
-                                            <img src={"static/images/icon03.png"} alt="tel" className="common_user_icon"/>
+                                            <span>TEL</span>
                                             <p className="common_user_info_text">090-4211-1111</p>
                                         </li>
                                         <li className="common_user_info">
-                                            <img src={"static/images/icon04.png"} alt="email" className="common_user_icon"/>
+                                            <span>メール</span>
                                             <p className="common_user_info_text">test@sample.com</p>
                                         </li>
                                         <li className="common_user_info">
-                                            <img src={"static/images/icon05.png"} alt="address" className="common_user_icon"/>
+                                            <span>なんちゃら</span>
                                             <p className="common_user_info_text">なんかのデータ</p>
                                         </li>
                                     </ul>
-                                    <ul className="common_user_info_list">
-                                        <li className="common_user_info">
-                                            <img src={"static/images/icon05.png"} alt="tel" className="common_user_icon"/>
-                                            <p className="common_user_info_text">なんかのでーた</p>
-                                        </li>
-                                        <li className="common_user_info">
-                                            <img src={"static/images/icon05.png"} alt="email" className="common_user_icon"/>
-                                            <p className="common_user_info_text">ういーす</p>
-                                        </li>
-                                        <li className="common_user_info">
-                                            <img src={"static/images/icon05.png"} alt="address" className="common_user_icon"/>
-                                            <p className="common_user_info_text">ちーす</p>
-                                        </li>
-                                    </ul>
                                 </li>
-
-                                <li className="common_user_item">
-                                    <div className="common_user_name_block">
-                                        <p className="common_user_name"><span>山田太郎</span>さん</p>
-                                        <a href="A-3-2.html" className="common_user_edit_btn">編集</a>
-                                    </div>
-                                    <ul className="common_user_info_list">
-                                        <li className="common_user_info">
-                                            <img src={"static/images/icon03.png"} alt="tel" className="common_user_icon"/>
-                                            <p className="common_user_info_text">090-4211-1111</p>
-                                        </li>
-                                        <li className="common_user_info">
-                                            <img src={"static/images/icon04.png"} alt="email" className="common_user_icon"/>
-                                            <p className="common_user_info_text">test@sample.com</p>
-                                        </li>
-                                        <li className="common_user_info">
-                                            <img src={"static/images/icon05.png"} alt="address" className="common_user_icon"/>
-                                            <p className="common_user_info_text">なんかのデータ</p>
-                                        </li>
-                                    </ul>
-                                    <ul className="common_user_info_list">
-                                        <li className="common_user_info">
-                                            <img src={"static/images/icon05.png"} alt="tel" className="common_user_icon"/>
-                                            <p className="common_user_info_text">なんかのでーた</p>
-                                        </li>
-                                        <li className="common_user_info">
-                                            <img src={"static/images/icon05.png"} alt="email" className="common_user_icon"/>
-                                            <p className="common_user_info_text">ういーす</p>
-                                        </li>
-                                        <li className="common_user_info">
-                                            <img src={"static/images/icon05.png"} alt="address" className="common_user_icon"/>
-                                            <p className="common_user_info_text">ちーす</p>
-                                        </li>
-                                    </ul>
-                                </li>
-
                             </ul>
                         </div>
-                        <div className="common_pager">	
+                        <div className="common_pager">
                             <a href="" className="common_pager_prev"></a>
                             <ul className="common_pager_list">
                                 <li className="common_pager_item">
@@ -172,10 +116,14 @@ const AdminDashbord = () => {
                             <a href="" className="common_pager_next active"></a>
                         </div>
                     </div>
-                </div>
-            </main>
-              
-            <AdminFooter /> 
+
+
+
+        <BrowserRouter>
+              <Switch>
+                /*<Route exact path='/admin_dashbord' component={AdminDashbord}/> */
+              </Switch>
+        </BrowserRouter>
         </React.Fragment>
     )
 }

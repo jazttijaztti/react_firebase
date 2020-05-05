@@ -525,6 +525,9 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   display: -ms-flexbox;
   display: -webkit-flex;
   margin: 0 0 15px;
+  padding:15px 0;
+  flex-wrap: wrap;
+
 }
 @media only screen and (max-width: 640px) {
   .common_user_info_list {
@@ -532,17 +535,19 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   }
 }
 .common_user_info_list .common_user_info {
-  width: calc( 100% / 3 );
-  -js-display: flex;
-  display: flex;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  -webkit-box-align: start;
-  -ms-flex-align: start;
-  -webkit-align-items: flex-start;
-  align-items: flex-start;
+  width: calc( 100% / 3 );  
+  position: relative;
+  padding:10px 0px;
 }
+.common_user_info_list .common_user_info span {
+  position: absolute;
+  font-size:12px;
+  top:0px;
+  left:0px;
+  font-weight: bold;
+}
+
+
 @media only screen and (max-width: 640px) {
   .common_user_info_list .common_user_info {
     width: 100%;

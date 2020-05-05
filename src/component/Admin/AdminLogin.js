@@ -3,7 +3,6 @@ import {connect} from 'react-redux'
 import ReactDOM from 'react-dom';
 import '../../css/admin/admin_style.css';
 import '../../css/admin/reset.css';
-import AdminDashbord from './AdminDashbord.js'
 //import AdminHeader from './common/Header.js'
 //import AdminFooter from './common/Footer.js'
 import { BrowserRouter, Switch, Route, Link } from 'react-router-dom'
@@ -11,10 +10,8 @@ import { BrowserRouter, Switch, Route, Link } from 'react-router-dom'
 
 
 const AdminLogin = () => {
-
-    return (
-        <React.Fragment>
-
+  return (
+      <>
         <main>
           <div className="login_wrap">
             <div className="login_block">
@@ -30,15 +27,15 @@ const AdminLogin = () => {
                   <input type="password" name="password" className="login_form_input" />
                   <p className="login_error_text" style={{display: 'none'}}>*入力してください</p>
                 </div>
-                <Link to='/admin_dashbord'>
-                    <button type="button" className="common_btn01 w300 center">ログイン</button>
+                <Link to='/admin/dashboard'>
+                  <button type="button" className="common_btn01 w300 center">ログイン</button>
                 </Link>
               </form>
             </div>
           </div>
         </main>
-        </React.Fragment>
-    )
+      </>
+  )
 }
 
 export default AdminLogin;

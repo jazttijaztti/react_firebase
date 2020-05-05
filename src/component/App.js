@@ -4,11 +4,13 @@ import '../css/index.css';
 import '../css/reset.css';
 import {users} from '../actions'
 import AdminLogin from './Admin/AdminLogin.js'
+
 import UserIndex from './Admin/UserIndex.js'
 import AdminDashbord from './Admin/AdminDashbord'
 import Top from './User/Top.js'
 import { BrowserRouter, Switch, Route, Link } from 'react-router-dom' //4つのAPI(タグが使える)をreact-router-domから読み込む
 import fbConfig from '../config/firebase'
+import AdminLayout from './Admin/AdminLayout';
 class App extends Component {
 
     componentDidMount(){
@@ -26,7 +28,8 @@ class App extends Component {
             <BrowserRouter>
               <Switch>
                 <Route exact path="/" component={Top}/>
-                <Route exact path='/admin' component={AdminLogin}/>
+                <Route path='/admin/login' component={AdminLogin}/>
+                <Route path='/admin' component={AdminLayout}/>
                 <Route path='/admin/user/' component={UserIndex}/>
                 <Route path='/admin_dashbord' component={AdminDashbord}/>
               </Switch>
