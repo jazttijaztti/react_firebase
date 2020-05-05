@@ -2,6 +2,8 @@ import firebase from 'firebase/app'
 import 'firebase/firestore'
 import 'firebase/auth'
 
+// 環境変数を使用する
+// 環境変数はroot直下にある.env_sampleを.envにリネームして設定する
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
   authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
@@ -11,10 +13,7 @@ const firebaseConfig = {
   messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGGING_SENDER_ID,
   appId: process.env.REACT_APP_FIREBASE_APP_ID
 };
-console.log(firebaseConfig);
 
 firebase.initializeApp(firebaseConfig);
-
-firebase.firestore()
 
 export default firebase;

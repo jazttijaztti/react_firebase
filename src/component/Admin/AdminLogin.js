@@ -1,15 +1,18 @@
-import React ,{ Component } from 'react';
+import React ,{ useEffect, useState } from 'react';
+import { Link } from 'react-router-dom'
 import {connect} from 'react-redux'
 import ReactDOM from 'react-dom';
 import '../../css/admin/admin_style.css';
 import '../../css/admin/reset.css';
-//import AdminHeader from './common/Header.js'
-//import AdminFooter from './common/Footer.js'
-import { BrowserRouter, Switch, Route, Link } from 'react-router-dom'
 
-
+import firebase from '../../config/firebase';
 
 const AdminLogin = () => {
+
+  const login = async () => {
+    return 'test';
+  }
+
   return (
       <>
         <main>

@@ -6,6 +6,10 @@ import AdminMenu   from './common/AdminMenu.js'
 import AdminHeader from './common/AdminHeader.js'
 import AdminFooter from './common/AdminFooter.js'
 
+import { AuthProvider } from './../../auth/AuthProvider';
+import PrivateRoute from './../../auth/PrivateRoute';
+
+
 import '../../css/admin/reset.css';
 import '../../css/admin/admin_style.css';
 
@@ -19,18 +23,20 @@ const AdminLayout = () => {
           {/* componentをlazyで読み込んでいる場合は「Suspense」が必要 */}
           <Suspense fallback={ <div>loading...</div> }>
             <Switch>
-              {
-                routes.map((route, index) => (
-                  <Route
-                    exact={ route.exact }
-                    key={ index }
-                    path={ route.path }
-                    component={ route.component }
-                    render={ props => (<route.component {...props} />) }
-                  />
-                ))
-              }
-              <Route render={() => <p>not found!.</p>} />
+              <AuthProvider>
+                {
+                  routes.map((route, index) => (
+                    <PrivateRoute
+                      component={ route.component }
+                      exact={ route.exact }
+                      key={ index }
+                      path={ route.path }
+                      render={ props => (<route.component {...props} />) }
+                    />
+                  ))
+                }
+                <Route render={() => <p>not found!.</p>} />
+              </AuthProvider>
             </Switch>
           </Suspense>
         </div>
