@@ -140,11 +140,7 @@ class AdminDashbord extends Component {
                             <div className="common_user_wrap">
                                 {this.getDataToHtml()}
                             </div>
-                            <Paginator
-                                sum="{Object.keys(this.state.data)}"
-                                per={5}
-                                component={Paginator}
-                            />
+                            <Paginator />
                         </div>
 
 
