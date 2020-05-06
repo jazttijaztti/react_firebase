@@ -15,7 +15,9 @@ class AdminDashbord extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            data: []
+            data: [],
+            offset: 1,
+            number: 0
         }
         this.getFireData();
     }
@@ -30,6 +32,13 @@ class AdminDashbord extends Component {
             self.setState({
               data: snapshot.val()
             });
+            let data = Object.keys(this.state.data);
+            let number = data.length;
+            number = number / 1;
+            this.setState({
+                number: number
+            });
+            console.log(this.state)
         });
     }
 
@@ -40,13 +49,12 @@ class AdminDashbord extends Component {
         for (let i in userData) {
             useUser.push(userData[i].value)
         }
-        console.log(useUser)
         let result = [];
         let count = 0;
         for ( let index in useUser) {
-            if ( index < 1 && count < 5 ) {
+            if ( index < this.state.offset && count < 5 ) {
                 result.push(
-                        <li className="common_user_item">
+                        <li className="common_user_item" key={index}>
                             <div className="common_user_name_block">
                                 <p className="common_user_name"><span>{useUser[index].name}</span>さん</p>
                                 <a href="A-3-2.html" className="common_user_edit_btn">詳細^^b</a>
@@ -76,7 +84,17 @@ class AdminDashbord extends Component {
         }
         return result;
     }
+
+    changeOffset() {
+        console.log('aaaa')
+       //const offset = 1 * (e.target.value - 1) + 1;
+       /*this.setState({
+           offset: offset
+       })*/
+    }
+
     render() {
+       console.log(1 * (2 - 1) + 1);
         return (
             <React.Fragment>
                         <div className="common_main">
@@ -140,7 +158,18 @@ class AdminDashbord extends Component {
                             <div className="common_user_wrap">
                                 {this.getDataToHtml()}
                             </div>
-                            <Paginator />
+                            <div className="common_pager">
+                                <a href="" className="common_pager_prev"></a>
+                                <ul className="common_pager_list">
+                                    <Paginator
+                                      changeOffset={this.changeOffset}
+                                    >
+                                    </Paginator>
+
+
+                                </ul>
+                                <a href="" className="common_pager_next active"></a>
+                            </div>
                         </div>
 
 
