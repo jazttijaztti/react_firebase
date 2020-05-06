@@ -12,8 +12,6 @@ const AdminLogin = ({ history }) => {
   // AuthContextからlogin関数を受け取る
   const { login } = useContext(AuthContext);
 
-
-
   const handleSubmit = event => {
     event.preventDefault();
     login(email, password, history);

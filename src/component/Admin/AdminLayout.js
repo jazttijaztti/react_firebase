@@ -1,12 +1,11 @@
-import React, { Suspense, useContext } from 'react';
-import { BrowserRouter, Switch, Route, Link } from 'react-router-dom'
+import React, { Suspense } from 'react';
+import { Switch, Route } from 'react-router-dom'
 import routes from '../../routes';
 
 import AdminMenu   from './common/AdminMenu.js'
 import AdminHeader from './common/AdminHeader.js'
 import AdminFooter from './common/AdminFooter.js'
 
-import { AuthContext } from './../../auth/AuthProvider';
 import PrivateRoute from './../../auth/PrivateRoute';
 
 import '../../css/admin/reset.css';

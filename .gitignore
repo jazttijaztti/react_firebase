@@ -5,3 +5,6 @@ node_modules/
 # Vim
 *.swp
 *.swap
+
+# vscode
+*.code-workspace

@@ -17,6 +17,16 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
+  const logout = async (history) => {
+    try {
+      await firebase.auth().signOut();
+      // ログアウト後はlogin画面へ遷移
+      history.push('/admin/login');
+    } catch (error) {
+      alert(error);
+    }
+  }
+
   useEffect(() => {
     firebase.auth().onAuthStateChanged(setCurrentUser);
   }, []);
@@ -25,6 +35,7 @@ export const AuthProvider = ({ children }) => {
     <AuthContext.Provider
       value={{
         login: login,
+        logout: logout,
         currentUser
        }}
     >
