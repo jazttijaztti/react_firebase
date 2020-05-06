@@ -15,6 +15,7 @@ import firebase from "firebase";
 import "firebase/storage";
 
 const AdminLayout = () => {
+  console.log(routes)
   return (
     <>
       <AdminHeader />
