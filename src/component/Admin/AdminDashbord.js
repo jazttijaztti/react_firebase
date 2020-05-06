@@ -11,9 +11,19 @@ class AdminDashbord extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            data: []
+            data: [],
+            allUserKeys: [],
+            userKeys: [],
+            totalRows: 0,
+            currentPage: 1,
+            perPage: 1,
+            offset: 0
         }
         this.getFireData();
+    }
+
+    testFunc () {
+        console.log(222);
     }
 
     getFireData() {
@@ -23,55 +33,18 @@ class AdminDashbord extends Component {
         ref
         .once('value')
         .then(snapshot => {
+            const data = snapshot.val();
+            const allUserKeys = Object.keys(data);
+            let userKeys = allUserKeys.slice(0, this.state.perPage)
             self.setState({
-              data: snapshot.val()
+              data: data,
+              allUserKeys: allUserKeys,
+              userKeys: userKeys,
+              totalRows: allUserKeys.length
             });
         });
     }
 
-    getDataToHtml() {
-        let userData = this.state.data;
-        userData = Object.entries(userData).map(([key, value]) => ({value}))
-        let useUser = [];
-        for (let i in userData) {
-            useUser.push(userData[i].value)
-        }
-        console.log(useUser)
-        let result = [];
-        let count = 0;
-        for ( let index in useUser) {
-            if ( index < 1 && count < 5 ) {
-                result.push(
-                        <li className="common_user_item">
-                            <div className="common_user_name_block">
-                                <p className="common_user_name"><span>{useUser[index].name}</span>さん</p>
-                                <a href="A-3-2.html" className="common_user_edit_btn">詳細^^b</a>
-                            </div>
-                            <ul className="common_user_info_list">
-                                <li className="common_user_info">
-                                    <span>TEL</span>
-                                    <p className="common_user_info_text">{useUser[index].tel}</p>
-                                </li>
-                                <li className="common_user_info">
-                                    <span>メール</span>
-                                    <p className="common_user_info_text">{useUser[index].email}</p>
-                                </li>
-                                <li className="common_user_info">
-                                    <span>とりあえず性別を表示</span>
-                                    <p className="common_user_info_text">{useUser[index].gender}</p>
-                                </li>
-                                <li className="common_user_info">
-                                    <span>住所</span>
-                                    <p className="common_user_info_text">{useUser[index].address}</p>
-                                </li>
-                            </ul>
-                        </li>
-                )
-            }
-            count++
-        }
-        return result;
-    }
     render() {
         return (
             <React.Fragment>
@@ -134,9 +107,41 @@ class AdminDashbord extends Component {
                             </div>
 
                             <div className="common_user_wrap">
-                                {this.getDataToHtml()}
+                                {
+                                    this.state.userKeys.map((key, index) =>
+                                        <li className="common_user_item" key={ index }>
+                                            <div className="common_user_name_block">
+                                                <p className="common_user_name"><span>{this.state.data[key].name}</span>さん</p>
+                                                <a href="A-3-2.html" className="common_user_edit_btn">詳細^^b</a>
+                                            </div>
+                                            <ul className="common_user_info_list">
+                                                <li className="common_user_info">
+                                                    <span>TEL</span>
+                                                    <p className="common_user_info_text">{this.state.data[key].tel}</p>
+                                                </li>
+                                                <li className="common_user_info">
+                                                    <span>メール</span>
+                                                    <p className="common_user_info_text">{this.state.data[key].email}</p>
+                                                </li>
+                                                <li className="common_user_info">
+                                                    <span>とりあえず性別を表示</span>
+                                                    <p className="common_user_info_text">{this.state.data[key].gender}</p>
+                                                </li>
+                                                <li className="common_user_info">
+                                                    <span>住所</span>
+                                                    <p className="common_user_info_text">{this.state.data[key].address}</p>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    )
+                                }
                             </div>
-                            <Paginator />
+                            <Paginator
+                                currentPage={this.state.currentPage}
+                                totalRows={this.state.totalRows}
+                                perPage={this.state.perPage}
+                                testFunc={this.testFunc}
+                            />
                         </div>
 
 
