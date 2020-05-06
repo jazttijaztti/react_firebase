@@ -9,21 +9,42 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (email, password, history) => {
     try {
-      await firebase.auth().signInWithEmailAndPassword(email, password);
-      history.push('admin/dashboard');
+      await firebase.auth().signInWithEmailAndPassword(email, password)
+        .then((response) => {
+          console.log(response);
+        });
+      history.push('/admin/dashboard');
+    } catch (error) {
+      alert(error);
+    }
+  };
+
+  const logout = async (history) => {
+    try {
+      await firebase.auth().signOut();
+      // ログアウト後はlogin画面へ遷移
+      history.push('/admin/login');
     } catch (error) {
       alert(error);
     }
   }
 
   useEffect(() => {
-    firebase.auth().onAuthStateChanged(setCurrentUser);
+    firebase.auth().onAuthStateChanged((user) => {
+      console.log('--------------');
+      console.log(user);
+      console.log('--------------');
+      setCurrentUser(user);
+      localStorage.setItem('currentUser', JSON.stringify(user));
+    });
   }, []);
 
   return (
     <AuthContext.Provider
       value={{
-        login: login
+        login: login,
+        logout: logout,
+        currentUser
        }}
     >
       { children }
