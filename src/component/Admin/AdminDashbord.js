@@ -6,6 +6,7 @@ import '../../css/admin/reset.css';
 import AdminMenu   from './common/AdminMenu.js'
 import AdminHeader from './common/AdminHeader.js'
 import AdminFooter from './common/AdminFooter.js'
+import Paginator from './Paginator.js'
 import { BrowserRouter, Switch, Route, Link } from 'react-router-dom'
 import firebase from "firebase";
 import "firebase/storage";
@@ -34,36 +35,37 @@ class AdminDashbord extends Component {
     getDataToHtml() {
         let result = [];
         for ( let i in this.state.data) {
-            result.push(
-                <li className="common_user_item">
-                    <div className="common_user_name_block">
-                        <p className="common_user_name"><span>{this.state.data[i].name}</span>さん</p>
-                        <a href="A-3-2.html" className="common_user_edit_btn">詳細^^b</a>
-                    </div>
-                    <ul className="common_user_info_list">
-                        <li className="common_user_info">
-                            <span>TEL</span>
-                            <p className="common_user_info_text">{this.state.data[i].tel}</p>
-                        </li>
-                        <li className="common_user_info">
-                            <span>メール</span>
-                            <p className="common_user_info_text">{this.state.data[i].email}</p>
-                        </li>
-                        <li className="common_user_info">
-                            <span>とりあえず性別を表示</span>
-                            <p className="common_user_info_text">{this.state.data[i].gender}</p>
-                        </li>
-                        <li className="common_user_info">
-                            <span>住所</span>
-                            <p className="common_user_info_text">{this.state.data[i].address}</p>
-                        </li>
-                    </ul>
-                </li>
-            );
+                result.push(
+                    <li className="common_user_item">
+                        <div className="common_user_name_block">
+                            <p className="common_user_name"><span>{this.state.data[i].name}</span>さん</p>
+                            <a href="A-3-2.html" className="common_user_edit_btn">詳細^^b</a>
+                        </div>
+                        <ul className="common_user_info_list">
+                            <li className="common_user_info">
+                                <span>TEL</span>
+                                <p className="common_user_info_text">{this.state.data[i].tel}</p>
+                            </li>
+                            <li className="common_user_info">
+                                <span>メール</span>
+                                <p className="common_user_info_text">{this.state.data[i].email}</p>
+                            </li>
+                            <li className="common_user_info">
+                                <span>とりあえず性別を表示</span>
+                                <p className="common_user_info_text">{this.state.data[i].gender}</p>
+                            </li>
+                            <li className="common_user_info">
+                                <span>住所</span>
+                                <p className="common_user_info_text">{this.state.data[i].address}</p>
+                            </li>
+                        </ul>
+                    </li>
+                );
         }
         return result;
     }
     render() {
+        console.log(this.state.data)
         return (
             <React.Fragment>
                         <div className="common_main">
@@ -127,27 +129,11 @@ class AdminDashbord extends Component {
                             <div className="common_user_wrap">
                                 {this.getDataToHtml()}
                             </div>
-                            <div className="common_pager">
-                                <a href="" className="common_pager_prev"></a>
-                                <ul className="common_pager_list">
-                                    <li className="common_pager_item">
-                                        <a href="" className="common_pager_link active"><span>1</span></a>
-                                    </li>
-                                    <li className="common_pager_item">
-                                        <a href="" className="common_pager_link"><span>2</span></a>
-                                    </li>
-                                    <li className="common_pager_item">
-                                        <a href="" className="common_pager_link"><span>3</span></a>
-                                    </li>
-                                    <li className="common_pager_item">
-                                        <a href="" className="common_pager_link"><span>4</span></a>
-                                    </li>
-                                    <li className="common_pager_item">
-                                        <a href="" className="common_pager_link"><span>5</span></a>
-                                    </li>
-                                </ul>
-                                <a href="" className="common_pager_next active"></a>
-                            </div>
+                            <Paginator
+                                sum="{Object.keys(this.state.data)}"
+                                per={5}
+                                component={Paginator}
+                            />
                         </div>
 
 
