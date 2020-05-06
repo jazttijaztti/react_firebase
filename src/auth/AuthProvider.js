@@ -11,7 +11,7 @@ export const AuthProvider = ({ children }) => {
     try {
       await firebase.auth().signInWithEmailAndPassword(email, password)
         .then((response) => {
-          console.log(response);
+          localStorage.setItem('currentUser', JSON.stringify(response.user));
         });
       history.push('/admin/dashboard');
     } catch (error) {
@@ -31,6 +31,7 @@ export const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged((user) => {
+<<<<<<< HEAD
       console.log('--------------');
       console.log(user);
       console.log('--------------');
@@ -38,6 +39,11 @@ export const AuthProvider = ({ children }) => {
       localStorage.setItem('currentUser', JSON.stringify(user));
     });
   }, []);
+=======
+      setCurrentUser(user);
+    });
+  });
+>>>>>>> 3498cc303bf239a3415c20c24e3b68ccab60c867
 
   return (
     <AuthContext.Provider

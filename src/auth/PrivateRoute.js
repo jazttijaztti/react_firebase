@@ -1,13 +1,10 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
-
-import { AuthContext } from './AuthProvider';
 
 // ...optionはRouteのpropsにあるexact, pathなどの指定を、
 const PrivateRoute = ({ component: RouteComponent, ...options }) => {
   // contextからログインしているuser情報を取得する
-  const { currentUser } = useContext(AuthContext);
-  console.log(RouteComponent);
+  const currentUser = JSON.parse(localStorage.getItem('currentUser'));
 
   return (
     <Route
