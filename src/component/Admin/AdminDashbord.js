@@ -24,7 +24,8 @@ class AdminDashbord extends Component {
         let db = firebase.database();
         let ref = db.ref("/users");
         let self = this;
-        ref.once('value')
+        ref
+        .once('value')
         .then(snapshot => {
             self.setState({
               data: snapshot.val()
@@ -33,39 +34,49 @@ class AdminDashbord extends Component {
     }
 
     getDataToHtml() {
+        let userData = this.state.data;
+        userData = Object.entries(userData).map(([key, value]) => ({value}))
+        let useUser = [];
+        for (let i in userData) {
+            useUser.push(userData[i].value)
+        }
+        console.log(useUser)
         let result = [];
-        for ( let i in this.state.data) {
+        let count = 0;
+        for ( let index in useUser) {
+            if ( index < 1 && count < 5 ) {
                 result.push(
-                    <li className="common_user_item">
-                        <div className="common_user_name_block">
-                            <p className="common_user_name"><span>{this.state.data[i].name}</span>さん</p>
-                            <a href="A-3-2.html" className="common_user_edit_btn">詳細^^b</a>
-                        </div>
-                        <ul className="common_user_info_list">
-                            <li className="common_user_info">
-                                <span>TEL</span>
-                                <p className="common_user_info_text">{this.state.data[i].tel}</p>
-                            </li>
-                            <li className="common_user_info">
-                                <span>メール</span>
-                                <p className="common_user_info_text">{this.state.data[i].email}</p>
-                            </li>
-                            <li className="common_user_info">
-                                <span>とりあえず性別を表示</span>
-                                <p className="common_user_info_text">{this.state.data[i].gender}</p>
-                            </li>
-                            <li className="common_user_info">
-                                <span>住所</span>
-                                <p className="common_user_info_text">{this.state.data[i].address}</p>
-                            </li>
-                        </ul>
-                    </li>
-                );
+                        <li className="common_user_item">
+                            <div className="common_user_name_block">
+                                <p className="common_user_name"><span>{useUser[index].name}</span>さん</p>
+                                <a href="A-3-2.html" className="common_user_edit_btn">詳細^^b</a>
+                            </div>
+                            <ul className="common_user_info_list">
+                                <li className="common_user_info">
+                                    <span>TEL</span>
+                                    <p className="common_user_info_text">{useUser[index].tel}</p>
+                                </li>
+                                <li className="common_user_info">
+                                    <span>メール</span>
+                                    <p className="common_user_info_text">{useUser[index].email}</p>
+                                </li>
+                                <li className="common_user_info">
+                                    <span>とりあえず性別を表示</span>
+                                    <p className="common_user_info_text">{useUser[index].gender}</p>
+                                </li>
+                                <li className="common_user_info">
+                                    <span>住所</span>
+                                    <p className="common_user_info_text">{useUser[index].address}</p>
+                                </li>
+                            </ul>
+                        </li>
+                )
+            }
+            count++
         }
         return result;
     }
     render() {
-        console.log(this.state.data)
         return (
             <React.Fragment>
                         <div className="common_main">
